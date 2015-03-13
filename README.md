@@ -11,7 +11,7 @@ Requires Git, and a bash-like shell with ls
 
 Clone script, and alias to something easy to remember and type, like "gls"
 
-    alias gls="/path/to/script"
+    alias gls="/path/to/git-ls.sh"
 
 ### Considerations
 
