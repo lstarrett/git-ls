@@ -23,8 +23,7 @@ do
 	then
 		stat="-"
 	else
-		# see git docs. second character is working tree status, and is what we want
-		stat=${gitstatus:1:1}
+		stat=${gitstatus:1:1} # grab the second char, which is the working tree status
 	fi
 	if [ $stat == "?" ]
 	then
@@ -47,8 +46,7 @@ do
 	then
 		ls -lh $file
 	else
-		# if it's a directory, ls -lh will list the contents, so just do this for now
-		echo "(DIR)  $file"
+		echo "(DIR)  $file" # ls -lh gives too much output for dirs, so just do this for now
 	fi
 done
 
