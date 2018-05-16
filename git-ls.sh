@@ -15,7 +15,11 @@ then
 	exit
 fi
 
+lsout=`ls -lh`
+IFS=$'\n' lslines=($lsout)
+
 # ls -ls every file, shimming a git status for the working tree in front
+i=1
 for file in *
 do
 	gitstatus=`git status --porcelain $file`
@@ -44,11 +48,8 @@ do
 			;;
 	esac
 
-	if [ ! -d $file ]
-	then
-		ls -lh $file
-	else
-		echo "(DIR)  $file" # ls -lh gives too much output for dirs, so just do this for now
-	fi
+	echo ${lslines[i]}
+	((i++))
+
 done
 
