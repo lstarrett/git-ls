@@ -25,22 +25,24 @@ do
 	else
 		stat=${gitstatus:1:1} # grab the second char, which is the working tree status
 	fi
-	if [ $stat == "?" ]
-	then
-		printf $nc $stat
-	elif [ $stat == "M" ]
-	then
-		printf $red $stat
-	elif [ $stat == "A" ]
-	then
-		printf $blue $stat
-	elif [ $stat == "D" ]
-	then
-		printf $purple $stat
-	elif [ $stat == "-" ]
-	then
-		printf $green "OK"
-	fi
+
+	case "$stat" in
+		"?")
+			printf $nc $stat
+			;;
+		"M")
+			printf $red $stat
+			;;
+		"A")
+			printf $blue $stat
+			;;
+		"D")
+			printf $purple $stat
+			;;
+		"-")
+			printf $green "OK"
+			;;
+	esac
 
 	if [ ! -d $file ]
 	then
